@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "mysql.rootpassword",
+    "database": "db_dev_rse",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "mysql.rootpassword",
+    "database": "db_test_rse",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "mysql.rootpassword",
+    "database": "db_prod_rse",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
