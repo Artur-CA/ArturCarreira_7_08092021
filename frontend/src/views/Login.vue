@@ -60,7 +60,7 @@ export default {
                         localStorage.setItem("userId", res.userId);
                         localStorage.setItem("token", res.token);
                         localStorage.setItem("isAdmin", res.isAdmin);
-                        this.$router.push("account");
+                        this.$router.push("list");
                         alert('Bienvenue sur Groupomania RSE !');
                     
                     } else {
