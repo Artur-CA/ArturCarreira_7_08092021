@@ -70,6 +70,7 @@ export default {
                     }
                 })
                 .then(this.$router.push("/list"))
+                .then(window.location.reload())
                 .catch(error => console.log(error))
         }
     }

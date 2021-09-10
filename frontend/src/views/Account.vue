@@ -9,7 +9,7 @@
                 <figure><img class="avatar" alt="Photo de Joker" src="../assets/img/joker.jpg"/>
                 </figure> 
                 <p>Votre compte est actif depuis le <span>{{ [ userAccount.createdAt, "YYYY-MM-DD" ] | moment("DD/MM/YYYY") }}</span></p><br>
-                <button @click="deleteAccount" class="accountbtn"><strong>Supprimez votre compte</strong></button>  
+                <button @click="deleteAccount" class="delete-btn"><strong>Supprimez votre compte</strong></button>  
             </div>  
      </section>
 </template>
@@ -100,7 +100,7 @@ export default {
 </script>
 
 <style lang="scss">
-.accountbtn {
+.delete-btn {
     width: auto;
     margin: 30px 0;
 }

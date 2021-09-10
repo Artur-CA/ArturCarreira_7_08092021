@@ -9,6 +9,7 @@ module.exports = (req, res, next) =>
     const token = req.headers.authorization.split(' ')[1]; // Récupération du token
     const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET'); // Fonction verify de jsonwebtoken pour décoder le token
     const userId = decodedToken.userId; // Récupération du userID
+    req.decodedToken = decodedToken
     if (req.body.userId && req.body.userId !== userId) { // Vérification de la correspondance entre userID de la requête et du token
       throw 'User ID non valable';
     } else {

@@ -12,16 +12,22 @@
           </div>  
           <div class="bloc_delete">
               <button v-if="post.userId == userId || isAdmin == true" 
-              type="button" @click="deletePost(post.id)" class="accountbtn"><strong>Supprimez</strong></button>
+              type="button" @click="deletePost(post.id)" class="delete-btn"><strong>Supprimez</strong></button>
           </div>
+
+           <Comments :postId="post.id" :postUserId="post.userId" />
       </div>   
     </div>
 
 </template>
 
 <script>
+import Comments from "@/components/Comments.vue";
 export default {
     name: "ListPosts",
+    components: {
+        Comments
+    },
 
     data() {
         return {
@@ -89,7 +95,9 @@ export default {
 .bloc_post {
   width: 90%;
   margin: 0 auto;
-  margin-bottom: 20px;
+  border: 6px #aeaeae solid;
+  background-color: white;
+  border-radius: 20px;
 
     & .title {
       color: #ba4d55;
@@ -100,9 +108,11 @@ h3 {
   text-transform: uppercase;
 }
 
-.bloc_delete button {
-  margin-bottom: 10px;
-
+.delete-btn {
+  margin-bottom: 50px;
+  margin-left: 5%;
+  display: flex;
+  justify-content: left;
 }
 
 

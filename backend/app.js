@@ -6,6 +6,7 @@ const path = require('path'); // Donne acçès au chemin du système de fichiers
 // Import des routeurs
 const userRoutes = require("./routes/user"); // Import de la route user
 const postRoutes = require("./routes/post"); // Import de la route post
+const commentRoutes = require("./routes/comment"); // Import de la route commentaire
 
 const app = express(); // Création application Express
 
@@ -25,6 +26,7 @@ app.use(bodyParser.json());
 // Acçès aux routes
 app.use('/api/auth', userRoutes);
 app.use('/api/posts', postRoutes); 
+app.use('/api/comments', commentRoutes); 
 
 // Export application Express
 module.exports = app;
