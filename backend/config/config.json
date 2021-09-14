@@ -8,14 +8,14 @@
   },
   "test": {
     "username": "root",
-    "password": "mysql.rootpassword",
+    "password": null,
     "database": "db_test_rse",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": "mysql.rootpassword",
+    "password": null,
     "database": "db_prod_rse",
     "host": "127.0.0.1",
     "dialect": "mysql"

@@ -5,9 +5,9 @@ import Register from '../views/Register.vue'
 import Post from '../views/Post.vue'
 import Account from '../views/Account.vue'
 import List from '../views/List.vue'
+import News from '../views/News.vue'
 
 Vue.use(VueRouter)
-Vue.use(require('vue-moment'))
 
 const routes = [
   {
@@ -34,6 +34,11 @@ const routes = [
     path: '/list',
     name: 'List',
     component: List,
+  },
+  {
+    path: '/news',
+    name: 'News',
+    component: News,
   }
 ]
 

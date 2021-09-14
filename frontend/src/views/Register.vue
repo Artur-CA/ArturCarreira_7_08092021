@@ -19,7 +19,7 @@
                 <label for="password">Mot de passe :</label>
                 <input type="password" id="password" class="form-control" required v-model="inputRegister.password"/>
               </div>  
-              <button><strong>Connexion</strong></button>                                       
+              <button class="btn"><strong>Connexion</strong></button>                                       
             </form> 
              
               <nav class="nav_register"><p>Vous avez déjà un compte ? <router-link to="/">Connectez-vous !</router-link></p></nav> 
@@ -86,7 +86,7 @@ form {
 	margin-top: 30px;
 }
 
-button {
+.btn {
   width: 120px;
   height: 40px;
   border: 4px solid #1a2c4a;

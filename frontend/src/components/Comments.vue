@@ -3,20 +3,19 @@
         <div>
             <div class="bloc_comment">
                 <textarea type="text" id="content" name="content" class="bloc_text" v-model="content"
-                placeholder="Insérer votre commentaire..."></textarea>
+                placeholder="Insérer votre pseudo (...) puis votre commentaire"></textarea>
                 <a v-on:click="createComment()"><i class="far fa-hand-pointer fa-2x" title="Envoyer" id="icon"></i></a>      
             </div>
             <div v-bind:value="content" v-for="comment in comments" :key="comment.id">
                 <div class="bloc_author">
-                    <h2> {{ username }} </h2> 
-                    <p> {{ comment.createdAt | moment("DD/MM/YY HH:mm")}} </p>
+                    <p> {{ dateFormat(comment.createdAt) }} </p>
                  </div>
                  <div class="bloc_comments">
                 <p> {{ comment.content }} </p>
                  </div>
             </div>
         </div>
-
+    
 </template>
 
 
@@ -26,12 +25,12 @@ export default {
 
     data() {
         return {
-            username:"",
-            userId:"",
-            content:"",
+            username: "",
+            content: "",
             comment: "",
             comments: [],
         }
+        
     },
     // Passer des données aux composants enfants avec les props
     props: {
@@ -48,6 +47,7 @@ export default {
                 'Content-Type': 'application/json'
             },
         };
+        
         fetch(url, options)
             .then(response => response.json())
             .then(data => {
@@ -55,7 +55,6 @@ export default {
             })
             .catch(error => console.log(error))
     },
-
 
     methods: {
         createComment() {
@@ -84,9 +83,16 @@ export default {
                 })
                 .then(window.location.reload())
                 .catch(error => console.log(error))
-        }
+        },
+
+        dateFormat(date){
+            const event = new Date(date);
+            const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+            return event.toLocaleDateString('fr-FR', options);
+        },
     },
 }
+
 </script>
 
 <style lang="scss">
@@ -112,6 +118,7 @@ export default {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  overflow-wrap: anywhere;
 }
 
 .bloc_text {

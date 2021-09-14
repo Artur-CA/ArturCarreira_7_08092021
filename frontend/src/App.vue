@@ -16,14 +16,13 @@
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 body, html {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  height: 100%; 
   background-color: #aeaeae;
 }
 
 #app {
-  height: 100%;
   font-family: 'Roboto', sans-serif;
 }
 

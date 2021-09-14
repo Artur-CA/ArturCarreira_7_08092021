@@ -13,7 +13,7 @@
                 <textarea type="text" id="content" rows="5" class="form_control" required v-model="inputPost.content"></textarea>
               </div>
             </form>              
-             <button v-on:click="sendPost"><strong>Envoyer</strong></button> 
+             <button v-on:click="sendPost" class="btn"><strong>Envoyer</strong></button> 
           </div> 
      </section> 
 </template>

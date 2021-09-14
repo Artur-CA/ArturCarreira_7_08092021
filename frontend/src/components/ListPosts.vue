@@ -4,7 +4,7 @@
       <div v-for="post in posts" :key="post.id" class="bloc_register">
           <div class="bloc_author">
               <h2> {{ post.user.username }} </h2>
-              <p> {{ post.createdAt | moment("DD/MM/YY HH:mm") }} </p>
+              <p> {{dateFormat(post.createdAt)}}  </p>
           </div>
           <div class="bloc_post">
               <h3 class="title"> {{ post.title }} </h3>
@@ -12,7 +12,7 @@
           </div>  
           <div class="bloc_delete">
               <button v-if="post.userId == userId || isAdmin == true" 
-              type="button" @click="deletePost(post.id)" class="delete-btn"><strong>Supprimez</strong></button>
+              type="button" @click="deletePost(post.id)" class="btn" id="delete-btn"><strong>Supprimez</strong></button>
           </div>
 
            <Comments :postId="post.id" :postUserId="post.userId" />
@@ -77,6 +77,12 @@ export default {
                 })
                 .catch(error => console.log(error))
         },
+
+         dateFormat(date){
+            const event = new Date(date);
+            const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+            return event.toLocaleDateString('fr-FR', options);
+        },
     },
 }
 </script>
@@ -98,6 +104,7 @@ export default {
   border: 6px #aeaeae solid;
   background-color: white;
   border-radius: 20px;
+  overflow-wrap: anywhere;
 
     & .title {
       color: #ba4d55;
@@ -108,7 +115,7 @@ h3 {
   text-transform: uppercase;
 }
 
-.delete-btn {
+#delete-btn {
   margin-bottom: 50px;
   margin-left: 5%;
   display: flex;

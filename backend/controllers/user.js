@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const { User } = require('../models/index');
 const crypto = require('crypto-js');
 
+
 // Regex
 const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{4,8}$/;
@@ -40,7 +41,7 @@ exports.register = (req, res, next) => {
                   password : hash,
                   username : req.body.username,
                   jobtitle : req.body.jobtitle,
-                  isAdmin : req.body.isAdmin
+                  isAdmin : req.body.isAdmin,
               })
                   .then((user) => {
                       res.status(201).json({ message: 'Utilisateur créé !' })
@@ -71,13 +72,13 @@ exports.login = (req, res, next) => {
             bcrypt.compare(req.body.password, userFound.password, function(errBycrypt, resBycrypt) {
                 if(resBycrypt) {
                     return res.status(200).json({ // Si comparaison ok, renvoie un objet JSON
-                        userId: userFound.id, 
+                        userId: userFound.id,
+                        isAdmin: userFound.isAdmin,
                         token: jwt.sign( 
                             { userId: userFound.id }, 
                             'RANDOM_TOKEN_SECRET', 
                             { expiresIn: '24h' }
                         ),
-                        isAdmin: userFound.isAdmin
                     });
                 } else {
                     return res.status(403).json({ 'error' : 'Mot de passe incorrect !' });
@@ -105,6 +106,17 @@ exports.deleteAccount = (req, res, next) => {
         .then((user) => {
           User.destroy({ where: { id: req.params.id }})
             .then(() => res.status(200).json({ message: 'Compte supprimé' }))
+            .catch(error => res.status(400).json({ error }));
+        })
+        .catch (error => res.status(500).json({ error }));
+};
+
+// Modification d'un compte
+exports.modifyAccount = (req, res, next) => {
+    User.findOne({ where: { id: req.params.id }})  
+        .then((user) => {
+          User.updateOne({ where: { id: req.params.id }})
+            .then(() => res.status(200).json({ message: 'Compte modifié' }))
             .catch(error => res.status(400).json({ error }));
         })
         .catch (error => res.status(500).json({ error }));

@@ -1,5 +1,6 @@
 const express = require('express'); 
 const bodyParser = require('body-parser'); 
+const helmet = require('helmet');
 
 const path = require('path'); // Donne acçès au chemin du système de fichiers
 
@@ -19,14 +20,15 @@ app.use((req, res, next) => {
   next();
 });
 
-// Transforme le corps de la requête en objet JS
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(helmet());
 
 // Acçès aux routes
 app.use('/api/auth', userRoutes);
 app.use('/api/posts', postRoutes); 
-app.use('/api/comments', commentRoutes); 
+app.use('/api/comments', commentRoutes);
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // Export application Express
 module.exports = app;

@@ -5,22 +5,27 @@
                 <h2>🔧 Gestion du compte</h2>
                 <p>Pseudo : {{ userAccount.username }}</p>
                 <p>Fonction : {{ userAccount.jobtitle }}</p>
+
                 <p>Avatar</p>
-                <figure><img class="avatar" alt="Photo de Joker" src="../assets/img/joker.jpg"/>
-                </figure> 
-                <p>Votre compte est actif depuis le <span>{{ [ userAccount.createdAt, "YYYY-MM-DD" ] | moment("DD/MM/YYYY") }}</span></p><br>
-                <button @click="deleteAccount" class="delete-btn"><strong>Supprimez votre compte</strong></button>  
+                
+                <button @click="uploadFile" class="modifAvatar"><ProfileAvatar :src="userAccount.avatar" /></button>
+				<input type="file" ref="fileUpload" @change="onFileSelected"  accept="image/*" id="file-input" aria-label="Modifier votre avatar">
+
+                <p>Votre compte est actif depuis le <span>{{ dateFormat(userAccount.createdAt) }}</span></p><br>
+                <button @click="deleteAccount" class="btn"><strong>Supprimez votre compte</strong></button>  
             </div>  
      </section>
 </template>
 
 <script >
 import Navbar from '../components/Navbar'
+import ProfileAvatar from '../components/ProfileAvatar.vue'
 
 export default {
     name: 'Account',
     components: {
-        Navbar
+        Navbar,
+        ProfileAvatar
     },
 
     data() {
@@ -29,15 +34,16 @@ export default {
                 userId: localStorage.getItem("userId"),
                 username: "",
                 createdAt: "",
-                jobtitle: ""
+                jobtitle: "",
             },
             inputAccount: {
                 username: "",
-                jobtitle: ""
-            }
+                jobtitle: "",
+            },
         }
     },
- 
+
+    
     mounted() {
         let url = `http://localhost:3000/api/auth/${ this.userAccount.userId }`;
         let options = {
@@ -59,7 +65,7 @@ export default {
     },
 
     methods: {
-       
+
         getOneAccount() {
             let url = `http://localhost:3000/api/auth/${ this.userAccount.userId }`;
             let options = {
@@ -95,18 +101,38 @@ export default {
                 .then(this.$router.push("/register"))
                 .catch(error => console.log(error))
         },
+
+        
+        dateFormat(date){
+            const event = new Date(date);
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return event.toLocaleDateString('fr-FR', options);
+        },
+
+        uploadFile () {
+				this.$refs.fileUpload.click()
+		},
+
+        onFileSelected(event) {
+            this.avatar = event.target.files[0]
+        },
     },
 } 
 </script>
 
 <style lang="scss">
-.delete-btn {
+.btn {
     width: auto;
     margin: 30px 0;
 }
 
-.avatar {
-    width: 6rem;
+#file-input {
+    display: none;
+}
+
+.modifAvatar {
+
+    margin: 0 auto;
 }
 
 </style>
