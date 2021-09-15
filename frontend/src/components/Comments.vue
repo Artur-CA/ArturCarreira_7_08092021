@@ -3,7 +3,7 @@
         <div>
             <div class="bloc_comment">
                 <textarea type="text" id="content" name="content" class="bloc_text" v-model="content"
-                placeholder="Insérer votre pseudo (...) puis votre commentaire"></textarea>
+                placeholder="Insérer votre pseudo ( ... ) puis votre commentaire"></textarea>
                 <a v-on:click="createComment()"><i class="far fa-hand-pointer fa-2x" title="Envoyer" id="icon"></i></a>      
             </div>
             <div v-bind:value="content" v-for="comment in comments" :key="comment.id">
@@ -124,16 +124,11 @@ export default {
 .bloc_text {
     width: 90%;
     height: auto;
-    margin: auto 0;
-    margin-bottom: 20px;
-
+    margin: 20px 0;
 }
 
-#icon {
-margin-bottom: 20px;
-    &:hover {
-    color: #ba4d55;
-    }
+#icon:hover {
+color: #ba4d55;
 }
 
 </style>

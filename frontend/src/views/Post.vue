@@ -81,20 +81,12 @@ export default {
 <style lang="scss">
 section {
     display: flex;
-    margin: auto;
+    margin: 25px 0;
     flex-direction: column;
 }
 
 textarea {
-    height: 11rem;
-}
-
-
-@media screen and (max-width: 768px) {
-	section {
-    flex-direction: column;
-    margin-top: 25px;
-    }
+    height: 10rem;
 }
 
 </style>
