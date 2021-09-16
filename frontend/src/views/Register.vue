@@ -1,7 +1,7 @@
 <template>
      
           <div class="bloc_register">          
-            <h2>👣 Rejoignez-nous !</h2>
+            <h1>👣 Rejoignez-nous !</h1>
             <form v-on:submit.prevent="register" id="form_register" >
               <div class="form_group">
                 <label for="username">Pseudo :</label>
@@ -22,7 +22,7 @@
               <button class="btn"><strong>Connexion</strong></button>                                       
             </form> 
              
-              <nav class="nav_register"><p>Vous avez déjà un compte ? <router-link to="/">Connectez-vous !</router-link></p></nav> 
+              <nav class="nav_register"><p>Vous avez déjà un compte ? <router-link to="/" title="Lien vers page de connexion">Connectez-vous !</router-link></p></nav> 
           </div> 
 </template>
 
@@ -159,14 +159,14 @@ input, textarea {
   width: 100%;
 
     & a {
-      color: #ba4d55;
+      color: rgb(22, 5, 64);
       font-family: 'jokerman', cursive; 
       font-size: 0.8em;
       text-decoration: none;
     }
 
     & a:hover, a:focus {
-      color: #1a2c4a;
+      color: #ba4d55;
     }
 }
 

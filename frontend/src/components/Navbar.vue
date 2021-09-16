@@ -1,12 +1,12 @@
 <template>
         <nav id="navbar">
-             <router-link to="/account" title="Votre compte"><i class="far fa-address-card"></i></router-link>
+            <router-link to="/account" title="Votre compte"><i class="far fa-address-card"></i></router-link>
             <router-link to="/post" title="Rédiger un post"><i class="fas fa-pencil-alt"></i></router-link> 
             <router-link to="/list" title="Liste des posts"><i class="far fa-envelope"></i></router-link>
             <router-link to="/news" title="Actualités"><i class="fas fa-globe"></i></router-link>
             <router-link to="/" title="Déconnexion"><i @click="deconnect" class="fas fa-sign-out-alt"></i></router-link>
         </nav>
-</template>
+</template> 
 
 <script>
 export default {

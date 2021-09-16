@@ -5,14 +5,11 @@
                 <h2>🔧 Gestion du compte</h2>
                 <p>Pseudo : {{ userAccount.username }}</p>
                 <p>Fonction : {{ userAccount.jobtitle }}</p>
-
                 <p>Avatar</p>
-                
                 <button @click="uploadFile" class="modifAvatar"><ProfileAvatar :src="userAccount.avatar" /></button>
 				<input type="file" ref="fileUpload" @change="onFileSelected"  accept="image/*" id="file-input" aria-label="Modifier votre avatar">
-
                 <p>Votre compte est actif depuis le <span>{{ dateFormat(userAccount.createdAt) }}</span></p><br>
-                <button @click="deleteAccount" class="btn"><strong>Supprimez votre compte</strong></button>  
+                <button @click="deleteAccount" class="btn" aria-label="Supprimer votre compte"><strong>Supprimez votre compte</strong></button>  
             </div>  
      </section>
 </template>

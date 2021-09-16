@@ -3,7 +3,7 @@
         <div>
             <div class="bloc_comment">
                 <textarea type="text" id="content" name="content" class="bloc_text" v-model="content"
-                placeholder="Insérer votre pseudo ( ... ) puis votre commentaire"></textarea>
+                placeholder="Insérer votre pseudo ( ... ) puis votre commentaire" aria-label="Insérer votre pseudo et votre commentaire"></textarea>
                 <a v-on:click="createComment()"><i class="far fa-hand-pointer fa-2x" title="Envoyer" id="icon"></i></a>      
             </div>
             <div v-bind:value="content" v-for="comment in comments" :key="comment.id">
@@ -11,7 +11,7 @@
                     <p> {{ dateFormat(comment.createdAt) }} </p>
                  </div>
                  <div class="bloc_comments">
-                <p> {{ comment.content }} </p>
+                    <p> {{ comment.content }} </p>
                  </div>
             </div>
         </div>

@@ -6,11 +6,11 @@
             <form id="form_register" >
               <div class="form_group">
                 <label for="title">Titre :</label>
-                <input type="text" id="title" class="form_control" required v-model="inputPost.title"/>
+                <input type="text" id="title" class="form_control" aria-label="Titre du message" required v-model="inputPost.title"/>
               </div>
               <div class="form_group">
                 <label for="content">Contenu :</label>
-                <textarea type="text" id="content" rows="5" class="form_control" required v-model="inputPost.content"></textarea>
+                <textarea type="text" id="content" rows="5" class="form_control" aria-label="Contenu du message" required v-model="inputPost.content"></textarea>
               </div>
             </form>              
              <button v-on:click="sendPost" class="btn"><strong>Envoyer</strong></button> 

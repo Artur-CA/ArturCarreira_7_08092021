@@ -12,7 +12,7 @@
           </div>  
           <div class="bloc_delete">
               <button v-if="post.userId == userId || isAdmin == true" 
-              type="button" @click="deletePost(post.id)" class="btn" id="delete-btn"><strong>Supprimez</strong></button>
+              type="button" @click="deletePost(post.id)" class="btn" id="delete-btn" aria-label="Supprimez le message"><strong>Supprimez</strong></button>
           </div>
 
            <Comments :postId="post.id" :postUserId="post.userId" />
