@@ -81,7 +81,9 @@ export default {
                         alert("Commentaire envoyé !");
                     }
                 })
-                .then(window.location.reload())
+                .then(setTimeout(() => {
+                    window.location.reload()
+                }, 1000))
                 .catch(error => console.log(error))
         },
 

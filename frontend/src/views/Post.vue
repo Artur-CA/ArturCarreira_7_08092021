@@ -70,7 +70,10 @@ export default {
                     }
                 })
                 .then(this.$router.push("/list"))
-                .then(window.location.reload())
+                .then(setTimeout(() => {
+                    window.location.reload()
+                }, 1000))
+
                 .catch(error => console.log(error))
         }
     }
