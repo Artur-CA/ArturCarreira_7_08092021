@@ -62,7 +62,6 @@ export default {
                     'Content-Type': 'application/json'
                 },
             }
-            console.log(options)
 
             fetch(url, options)
                 .then(res => res.json())
@@ -70,8 +69,6 @@ export default {
                       localStorage.setItem("userId", res.userId);
                       localStorage.setItem("token", res.token);
                       this.$router.push("/");
-                      alert("Bienvenue sur Groupomania RSE ! Connectez-vous !");
-                    console.log(localStorage)
                 })
                 .catch(error => console.log(error))
         }

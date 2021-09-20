@@ -8,7 +8,7 @@ exports.createPost = (req, res, next) => {
         content: req.body.content
     }; 
     Post.create(post)
-        .then(() => res.status(201).json({ post: "Post envoyé!" }))
+        .then(() => res.status(201).json({ message: "Post envoyé !" }))
         .catch(error => res.status(400).json({ error }));
 };
 
@@ -17,7 +17,7 @@ exports.deletePost = (req, res, next) => {
     Post.findOne({ where: { id: req.params.id }}) // On trouve l'objet dans la DB
         .then((post) => {
             Post.destroy({ where: { id: req.params.id } })
-                .then(() => res.status(200).json({ post: 'Post supprimé' }))
+                .then(() => res.status(200).json({ message: 'Post supprimé !' }))
                 .catch(error => res.status(400).json({ error }));
         })
         .catch(error => res.status(500).json({ error }));

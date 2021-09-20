@@ -38,7 +38,6 @@ export default {
 
     mounted() {
         this.userId = JSON.parse(localStorage.getItem("userId"));
-        console.log(this.userId)
     },
 
     methods: {
@@ -61,7 +60,6 @@ export default {
             fetch(url, options)
                 .then(res => res.json())
                 .then((res) => {
-                    console.log(res)
                     if (res.ok) {
                         window.location.reload();
                         this.inputPost = {} // Suppression des inputs

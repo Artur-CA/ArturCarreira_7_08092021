@@ -41,7 +41,6 @@ export default {
                 "email": this.inputLogin.email,
                 "password": this.inputLogin.password
             }
-            console.log(loginDatas)
 
             let url = "http://localhost:3000/api/auth/login"
             let options = {
@@ -51,7 +50,6 @@ export default {
                     'Content-Type': 'application/json'
                 }
             }
-            console.log(options)
            
             fetch(url, options)
                 .then(res => res.json())

@@ -33,10 +33,6 @@ export default {
                 createdAt: "",
                 jobtitle: "",
             },
-            inputAccount: {
-                username: "",
-                jobtitle: "",
-            },
         }
     },
 

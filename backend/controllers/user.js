@@ -11,7 +11,7 @@ const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{4
 // Fonction register, création nouvel utilisateur
 exports.register = (req, res, next) => {    
   if (req.body.email == null || req.body.email == '' || req.body.password == null || req.body.password == '' || req.body.username == null || req.body.username == '') {
-      return res.status(400).json({ 'error': 'Données manquantes !' });
+      return res.status(400).json({ error: 'Données manquantes !' });
   }
 
   if (req.body.username.length <= 2 || req.body.username.length >= 16) {
@@ -19,11 +19,11 @@ exports.register = (req, res, next) => {
   }
 
   if (!EMAIL_REGEX.test(req.body.email)) {
-    return res.status(400).json({ 'error': 'Email invalide !' });
+    return res.status(400).json({ error: 'Email invalide !' });
   }
 
   if (!PASSWORD_REGEX.test(req.body.password)) {
-    return res.status(400).json({ 'error': 'Le mot de passe doit contenir 4 à 8 caractères dont au moins une majuscule, une minuscule, un chiffre et un symbole' });
+    return res.status(400).json({ error: 'Le mot de passe doit contenir 4 à 8 caractères dont au moins une majuscule, une minuscule, un chiffre et un symbole' });
   }
 
   User.findOne({
@@ -41,16 +41,16 @@ exports.register = (req, res, next) => {
                   password : hash,
                   username : req.body.username,
                   jobtitle : req.body.jobtitle,
-                  isAdmin : req.body.isAdmin,
+                  isAdmin : false,
               })
                   .then((user) => {
                       res.status(201).json({ message: 'Utilisateur créé !' })
                   });
           })
               .catch(error => res.status(400).json({ error }));
-
+              
          } else {
-           return res.status(409).json({ 'error': 'Utilisateur déjà existant !' });
+           return res.status(409).json({ error : 'Utilisateur déjà existant !' });
          }
     })
 }
@@ -59,7 +59,7 @@ exports.register = (req, res, next) => {
 // Fonction login
 exports.login = (req, res, next) => {
     if (req.body.email == null || req.body.email == '' || req.body.password == null || req.body.password == '') {
-        return res.status(400).json({ 'error': 'Données manquantes !' });
+        return res.status(400).json({ error : 'Données manquantes !' });
     }
 
     User.findOne({
@@ -81,12 +81,12 @@ exports.login = (req, res, next) => {
                         ),
                     });
                 } else {
-                    return res.status(403).json({ 'error' : 'Mot de passe incorrect !' });
+                    return res.status(403).json({ error : 'Mot de passe incorrect !' });
                 }
             });
 
             } else {
-                return res.status(404).json({ 'error': 'Utilisateur inconnu !' });
+                return res.status(404).json({ error: 'Utilisateur inconnu !' });
             }
         });
 }
